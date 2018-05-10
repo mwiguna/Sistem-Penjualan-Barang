@@ -1,0 +1,114 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu">Admin Menu</div>
+		<a href="/homeadmin"   class="col-12 active">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/barangadmin" class="col-12">Daftar Barang</a>
+		<a href="/masukadmin"  class="col-12">Barang Masuk<span class="notifadmin bcmasuk"></span></a>
+		<a href="/laporan"  class="col-12">Laporan</a>
+		<a href="/member"      class="col-12">Member</a>
+	</div>
+	<div class="col-9 col-lg-10 col-md-8 main-admin">
+		<h3 data-toa="{{ data.id_pengirim }}" data-namea="{{ pengirim }}">Nota Pembelian Barang<hr></h3>
+
+		<div class="col-8">
+				<table border="0">
+					<tr>
+						<td style="width: 35%">Nama Barang</td>
+						<td style="width: 5%">:</td>
+						<td id="barang" data-name="{{ data.nama }}">{{ data.nama }}</td>
+					</tr>
+					<tr>
+						<td>Jumlah</td>
+						<td>:</td>
+						<td>{{ data.qty }}</td>
+					</tr>
+					<tr>
+						<td>Harga</td>
+						<td>:</td>
+						<td>Rp. {{ data.harga }}</td>
+					</tr>
+					<tr>
+						<td>Ongkos Kirim</td>
+						<td>:</td>
+						<td>Rp. {{ data.ongkir }}</td>
+					</tr>
+					{% set total = data.harga * data.qty + data.ongkir %}
+					<tr>
+						<td>Total</td>
+						<td>:</td>
+						<td>Rp. {{ total }}</td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td>:</td>
+						<td>{{ data.alamat }}</td>
+					</tr>
+					<tr>
+						<td>Pemesan</td>
+						<td>:</td>
+						<td><a href="/profile/{{ data.id_pemesan }}">{{ data.pemesan }}</a></td>
+					</tr>
+					<tr>
+						<td>Pengirim</td>
+						<td>:</td>
+						<td><a href="/profile/{{ data.id_pengirim }}">{{ pengirim }}</a></td>
+					</tr>
+					<tr>
+						<td>Pembayaran Atas Nama</td>
+						<td>:</td>
+						<td>{{ data.namarek }}</td>
+					</tr>
+					<tr>
+						<td>Bank</td>
+						<td>:</td>
+						<td>{{ data.bank }}</td>
+					</tr>
+					<tr>
+						<td>Tanggal</td>
+						<td>:</td>
+						<td>{{ data.waktu }}</td>
+					</tr>
+
+				{% if data.id_pengirim == 0 %}
+
+					<tr>
+						<td colspan="3">
+							<form action="/resiadmin/{{ val }}" method="POST">			
+								<input class="col-12" type="text" name="resi" placeholder="No. Resi" value="{{ data.resi }}" required>
+								<input class="col-4" type="submit" value="Update Resi">
+							</form>
+						</td>
+					</tr>
+
+				{% else %}
+
+					<tr>
+						<td>Resi</td>
+						<td>:</td>
+						<td>
+							{% if data.resi == null %} <i>Barang belum dikirim.</i>
+							{% else %} {{ data.resi }}
+							{% endif %}
+						</td>
+					</tr>
+
+				{% endif %}
+
+				</table>
+				{% if data.validasi == 0 %}
+				<a class="col-8 buy-bt val-bc" href="/validasi/{{ val }}" onclick="return confirm('Yakin ingin memvalidasi pembelian ini?')">Validasi</a>
+				{% endif %}
+		</div> 
+
+	</div>
+</div>
+
+<script src="../js/beliadmin.js"></script>
+<script src="../js/beli.js"></script>
+<script src="../js/bcbeli.js"></script>
+
+
+{% endblock %}

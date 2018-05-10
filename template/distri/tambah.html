@@ -1,0 +1,30 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu dstm">Distributor Menu</div>
+		<a href="/homedistri"   class="col-12">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/tambahdistri" class="col-12 active">Tambah Barang</a>
+		<a href="/barangdistri" class="col-12">Daftar Barang</a>
+		<a href="/lapordistri"  class="col-12">Laporan</a>
+	</div>
+	<div class="col-9 col-lg-7 col-md-8 main-admin">
+		<h3>Tambah Barang</h3>
+		<form action="/tambahdistri" method="POST" enctype="multipart/form-data">
+			<input class="col-7" type="text" name="nama"  placeholder="Nama Barang" id="nama" required>
+			<input class="col-7" type="number" name="harga" placeholder="Harga Barang" required>
+			<input class="col-7" type="number" name="berat" placeholder="Berat (gr)" required>
+			<input class="col-7" type="number" min="1" name="stok"  placeholder="Stok Barang" required>
+			<input class="col-7" type="file" name="img" required>
+			<input class="col-7" type="submit" value="Tambahkan Barang">
+		</form>
+	</div>
+</div>
+
+<script src="js/masuk.js"></script>
+<script src="js/beli.js"></script>
+<script src="js/bcbeli.js"></script>
+
+
+{% endblock %}

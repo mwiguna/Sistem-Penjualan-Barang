@@ -1,0 +1,39 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu">Admin Menu</div>
+		<a href="/homeadmin"   class="col-12">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/barangadmin" class="col-12">Daftar Barang</a>
+		<a href="/masukadmin"  class="col-12">Barang Masuk<span class="notifadmin bcmasuk"></span></a>
+		<a href="/laporan"  class="col-12">Laporan</a>
+		<a href="/member"      class="col-12 active">Member</a>
+	</div>
+	<div class="col-9 col-lg-10 col-md-8 main-admin">
+		<h2>Daftar Member</h2>
+		<div class="col-12">
+			<form method="POST">
+				<input type="text" class="col-4" name="search" placeholder="Cari Member">
+				<input type="submit" class="col-2" value="Search">
+			</form>
+		</div>
+
+		<div class="col-12 bot2"><i>{{ msg }}</i></div>
+
+			{% set i = 1 %}
+			{% for dt in data %}
+			<div class="col-12 member">
+				<a href="/profile/{{ dt.id }}" class="col-6 listcom">{{ i }}. {{ dt.nama }}<div class="col-12 timm">{{ dt.email }}</div></a>
+			</div>
+			{% set i = i + 1 %}
+			{% endfor %}
+	</div>
+</div>
+
+<script src="js/bcmasuk.js"></script>
+<script src="js/beli.js"></script>
+<script src="js/bcbeli.js"></script>
+
+
+{% endblock %}

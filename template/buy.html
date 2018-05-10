@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+	<div class="row">
+		<div class="col-8 col-lg-10 col-md-8 main-admin">
+			<div class="col-3 push-1"><img src="../../{{ data.img }}"></div>
+			<div class="col-7">
+				<div class="col-12"><h2>Form Pembelian</h2></div>
+				<form method="POST" id="sendBuy">
+					<div class="col-12 label">{{ data.nama }}</div>
+					<div class="col-12 label">Rp. {{ data.harga }}/pcs</div>
+					<div class="col-12 label">{{ data.berat }} gram</div>
+					{% if data.stok == 0 %}
+						<div class="col-12 label">Stok Habis.</div>
+					{% else %}
+						<div class="col-12 label">Stok : {{ data.stok }}</div>
+						<input class="col-12 pad2" type="number" name="total" min="1" max="{{ data.stok }}" placeholder="Jumlah yang ingin dibeli" required>
+						<input class="col-12 pad2" type="text" name="alamat" placeholder="Alamat" value="{{ row.alamat }}">
+    					<input type="hidden" name="ot">
+						<input class="col-3 pad2" type="submit" value="Beli">
+					{% endif %}
+				</form>
+			</div>
+		</div>
+		<div class="col-3 col-lg-10 main-admin">
+			<div class="col-12"><h3>Cek Ongkir</h3></div>
+			{% include 'formkota.html' %}
+			<button class="col-10 buy-bt cekOngkir" style="border: none">Cek</button>
+			<div class="col-10 pad2" id="ongkird"></div>
+		</div>
+	</div>
+ 
+	<script>
+		$(document).ready(function(){
+			$(".kota-asal, .kota-tujuan").addClass('pad3').addClass('col-10');
+			$(".kota-asal").val(dataCities[ {{ data.kota }} - 1].value);
+			$(".kota-tujuan").val(dataCities[ {{ row.kota }} - 1].value);
+			
+			$(document).on("submit", "#sendBuy", function(){
+				if($("input[name='ot']").val() == "") {
+					alert("Harap cek ongkir terlebih dahulu.");
+					return false;
+				}
+			});
+
+			function cekOngkir(){
+				if($("input[name='total']").val() != ""){
+					asal   = $("input[name='vo']").val();
+					tujuan = $("input[name='vd']").val();
+					total  = $("input[name='total']").val() * 1;
+					max    = $("input[name='total']").attr("max") * 1;
+					berat  = $("input[name='hg']").val() * total;
+
+					if(total % 1 == 0 && total <= max){
+						if(total != 0 && tujuan != ""){
+							$(".cekOngkir").html("Loading..");
+							$(".cekOngkir").removeClass('cekOngkir');
+
+							$.ajax({
+								method: "POST",
+								url: "/cekOngkir",
+								data: {asal: asal, tujuan: tujuan, berat: berat},
+								success: function(res){
+									if(res){
+										$("#ongkird").html("Ongkir : Rp. "+res);
+										$("input[name='ot']").val(res);
+									} else alert("Daerah anda tidak termasuk dalam jangkauan pengiriman.");
+
+									$(".buy-bt").addClass('cekOngkir');
+									$(".cekOngkir").html("Cek");
+								}
+							});
+						} else if(tujuan == "") alert("Harap isi dahulu kota anda.");
+						else alert("Harap mengisi dulu jumlah barang yang ingin dibeli.");
+					} else if(total > max) alert("Stok tidak mencukupi.");
+					else alert("Mohon masukkan bilangan bulat.");
+				}
+			}
+
+			$(document).on("click", ".cekOngkir", function(){ cekOngkir(); });
+			$(document).on("keyup", "input[name='total']", function(){ cekOngkir(); });
+		});
+	</script>
+
+{% endblock %}

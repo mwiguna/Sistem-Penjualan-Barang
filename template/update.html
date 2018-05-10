@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3>{{ title }}</h3>
+<form method="POST">
+	<input type="text" name="no_iduk" placeholder="no induk" value="{{ data.no_iduk }}" disabled><br>
+	<input type="text" name="nama" placeholder="nama" value="{{ data.nama }}"><br>
+	<input type="text" name="alamat" placeholder="alamat" value="{{ data.alamat }}"><br>
+	<input type="submit" value="Kirim">
+</form>
+
+{% endblock %}

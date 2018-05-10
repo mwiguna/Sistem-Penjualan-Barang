@@ -1,0 +1,55 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu dstm">Distributor Menu</div>
+		<a href="/homedistri"   class="col-12">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/tambahdistri" class="col-12">Tambah Barang</a>
+		<a href="/barangdistri" class="col-12">Daftar Barang</a>
+		<a href="/lapordistri"  class="col-12 active">Laporan</a>
+	</div>
+	<div class="col-9 col-lg-10 col-md-8">
+		<h3>Laporan Penjualan Barang</h3>
+		
+		<div class="main-cont col-12">
+
+			<div class="col-12 lapc">
+				<div class="col-1 col-md-8 pad2"><b>No.</b></div>
+				<div class="col-4 col-md-8 pad2"><b>Nama Barang</b></div>
+				<div class="col-2 col-md-8 pad2"><b>Penjual</b></div>
+				<div class="col-1 col-md-8 pad2"><b>Jumlah</b></div>
+				<div class="col-3 col-lg-2 pad2"><b>Total</b></div>
+			</div>
+
+			{% set i = 1 %}
+			{% set atotal = 0 %}
+			{% set pend   = 0 %}
+
+			{% for dt in data %}
+				<a href="/notajualdistri/{{ dt.id }}" class="col-12 lapc">
+					<div class="col-1 col-md-8 col-sm-1 pad2">{{ i }}.</div>
+					<div class="col-4 col-md-8 col-sm-1 pad2">{{ dt.nama }}</div>
+					<div class="col-2 col-md-8 pad2">{{ dt.pengirim }}</div>
+					<div class="col-1 col-md-8 pad2">{{ dt.qty }}</div>
+					<div class="col-3 col-lg-2 pad2">Rp. {{ dt.harga * dt.qty }}</div>
+				</a>
+				{% set i = i + 1 %}
+				{% set atotal = atotal + dt.qty %}
+				{% set pend   = pend + dt.harga * dt.qty %}
+			{% endfor %}
+
+		</div>
+
+		<h4 class="col-4 col-lg-10">Jumlah Barang Terjual : {{ atotal }}</h4>		
+		<h4 class="col-4 col-lg-10">Jumlah Pembeli : {{ att }}</h4>
+		<h4 class="col-4 col-lg-10">Total Pendapatan = Rp. {{ pend }}, -</h4>
+	</div>
+</div>
+
+<script src="js/masuk.js"></script>
+<script src="js/bcmasuk.js"></script>
+<script src="js/beli.js"></script>
+<script src="js/bcbeli.js"></script>
+
+{% endblock %}

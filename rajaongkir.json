@@ -1,0 +1,30 @@
+{"rajaongkir":{
+
+	"query":{"origin":"501","destination":"114","weight":1700,"courier":"jne"},
+	
+	"status":{"code":200,"description":"OK"},
+	
+	"origin_details":{"city_id":"501","province_id":"5","province":"DI Yogyakarta","type":"Kota","city_name":"Yogyakarta","postal_code":"55222"},
+	
+	"destination_details":{"city_id":"114","province_id":"1","province":"Bali","type":"Kota",
+	
+	"city_name":"Denpasar","postal_code":"80227"},
+
+	"results":[
+		{"code":"jne","name":"Jalur Nugraha Ekakurir (JNE)","costs":[
+		
+			{"service":"OKE","description":"Ongkos Kirim Ekonomis","cost":[{"value":42000,"etd":"4-5","note":""}]},
+
+			{"service":"REG","description":"Layanan Reguler","cost":[{"value":48000,"etd":"2-3","note":""}]},
+
+			{"service":"YES","description":"Yakin Esok Sampai","cost":[{"value":104000,"etd":"1-1","note":""}]},
+
+			{"service":"SPS","description":"Super Speed","cost":[{"value":367000,"etd":"","note":""}]},
+
+			{"service":"JTR","description":"JNE Trucking","cost":[{"value":50000,"etd":"","note":""}]},
+
+			{"service":"JTR250","description":"JNE Trucking","cost":[{"value":1350000,"etd":"","note":""}]},
+
+			{"service":"JTR<150","description":"JNE Trucking","cost":[{"value":500000,"etd":"","note":""}]},
+
+			{"service":"JTR>250","description":"JNE Trucking","cost":[{"value":1900000,"etd":"","note":""}]}]}]}}

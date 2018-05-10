@@ -1,0 +1,68 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu">User Menu</div>
+		<a href="/homeuser"   class="col-12">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/pembelian"  class="col-12 active">Pembelian</a>
+		<a href="/tambahuser" class="col-12">Tambah Barang</a>
+		<a href="/baranguser" class="col-12">Daftar Barang</a>
+		<a href="/pesanuser"  class="col-12">Pesan<span class="notifadmin bcpesan"></span></a>
+		<a href="/teman"      class="col-12">Teman</a>
+		<a href="/memberuser" class="col-12">Member</a>
+		<a href="/biodata" class="col-12">Biodata</a>
+	</div>
+	<div class="col-9 col-lg-7 col-md-8 main-admin">
+		<h3 data-me="{{ me }}" data-to="{{ data.id_pengirim }}" data-name="{{ name }}">Konfirmasi Pembelian</h3>
+
+		<div class="col-10">
+			<form method="POST" onsubmit="return confirm('Apakah anda yakin data ini benar?')">
+				<table class="col-10" border="0">
+					<tr>
+						<td style="width: 20%">Nama Barang</td>
+						<td style="width: 5%">:</td>
+						<td id="barang" data-name="{{ data.nama }}">{{ data.nama }}</td>
+					</tr>
+					<tr>
+						<td>Jumlah</td>
+						<td>:</td>
+						<td>{{ data.qty }}</td>
+					</tr>
+					<tr>
+						<td>Harga</td>
+						<td>:</td>
+						<td>Rp. {{ data.harga }}</td>
+					</tr>
+					<tr>
+						<td>Ongkos Kirim</td>
+						<td>:</td>
+						<td>Rp. {{ data.ongkir }}</td>
+					</tr>
+					{% set total = data.harga * data.qty + data.ongkir %}
+					<tr>
+						<td>Total</td>
+						<td>:</td>
+						<td>Rp. {{ total }}</td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td>:</td>
+						<td>{{ data.alamat }}</td>
+					</tr>
+				</table>
+				<input class="col-8 pad1" type="text" name="namarek" placeholder="Pembayaran Atas Nama" value="{{ rows.namarek }}" required>
+				<input class="col-8 pad1 push-2" type="text" name="bank" placeholder="Nama Bank" value="{{ rows.bank }}" required>
+				<input class="col-3 pad1" type="submit" value="Konfirmasi">
+			</form>
+			<a href="/cancel/{{ data.id }}" class="col-3 pad1 cancel-btn" onclick="return confirm('Yakin ingin menghapus pembelian ini?')">Batalkan Pembelian</a>
+		</div>
+
+	</div>
+</div>
+
+<script src="../js/bcpesan.js"></script>
+<script src="../js/beliadmin.js"></script>
+<script src="../js/bcbeli.js"></script>
+
+{% endblock %}

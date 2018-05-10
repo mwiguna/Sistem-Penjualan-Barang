@@ -1,0 +1,36 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu">Admin Menu</div>
+		<a href="/homeadmin"   class="col-12 active">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/barangadmin" class="col-12">Daftar Barang</a>
+		<a href="/masukadmin"  class="col-12">Barang Masuk<span class="notifadmin bcmasuk"></span></a>
+		<a href="/laporan"  class="col-12">Laporan</a>
+		<a href="/member"      class="col-12">Member</a>
+	</div>
+	<div class="col-9 col-lg-10 col-md-8 main-admin">
+		<h3 class="col-4 push-1">History Penjualan</h3>
+		<h4 class="col-4">Total Penjualan : <span class="totbarr">{{ total }}</span> Barang</h4>
+
+		<div id="penda">
+			{% for dt in data %}
+				<div class="col-12 member">
+					<div class="col-7 push-1 listcom">
+						{{ dt.pemesan }} Melakukan Pembelian {{ dt.namabarang }}
+						<div class="col-12 timm">Pada : {{ dt.waktu }}</div>
+					</div>
+					<a href="/notajualadmin/{{ dt.id }}" class="col-3 fol">Lihat Detail &raquo;</a>
+				</div>
+			{% endfor %}
+		</div>
+
+	</div>
+</div>
+
+<script src="js/bcmasuk.js"></script>
+<script src="js/beliadmin.js"></script>
+<script src="js/bcbeli.js"></script>
+
+{% endblock %}

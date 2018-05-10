@@ -1,0 +1,36 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu">Admin Menu</div>
+		<a href="/homeadmin"   class="col-12">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/barangadmin" class="col-12 active">Daftar Barang</a>
+		<a href="/masukadmin"  class="col-12">Barang Masuk<span class="notifadmin bcmasuk"></span></a>
+		<a href="/laporan"     class="col-12">Laporan</a>
+		<a href="/member"      class="col-12">Member</a>
+	</div>
+	<div class="col-9 col-lg-10 col-md-8 main-admin">
+		<div class="col-3 push-1"><img src="../../{{ data.img }}"></div>
+		<div class="col-7">
+			<form method="POST">
+				<div class="col-12 label">Nama Barang :</div>
+				<input class="col-12 pad2" type="text" name="nama" value="{{ data.nama }}">
+				<div class="col-12 label">Harga Barang :</div>
+				<input class="col-12 pad2" type="text" name="harga" value="{{ data.harga }}">
+				<div class="col-12 label">Stok :</div>
+				<input class="col-12 pad2" type="text" name="stok" value="{{ data.stok }}">
+				<div class="col-12 label">Berat :</div>
+				<input class="col-12 pad2" type="text" name="berat" value="{{ data.berat }}">
+				<div class="col-12 label">Penjual : {{ data.penjual }}</div>
+				<input class="col-3 pad2" type="submit" value="Edit">
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="../../js/bcmasuk.js"></script>
+<script src="../../js/beli.js"></script>
+<script src="../../js/bcbeli.js"></script>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu">User Menu</div>
+		<a href="/homeuser"   class="col-12 active">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/pembelian"  class="col-12">Pembelian</a>
+		<a href="/tambahuser" class="col-12">Tambah Barang</a>
+		<a href="/baranguser" class="col-12">Daftar Barang</a>
+		<a href="/pesanuser"  class="col-12">Pesan<span class="notifadmin bcpesan"></span></a>
+		<a href="/teman"      class="col-12">Teman</a>
+		<a href="/memberuser" class="col-12">Member</a>
+		<a href="/biodata" class="col-12">Biodata</a>
+	</div>
+	<div class="col-9 col-lg-7 col-md-8 main-admin">
+		<h3 data-me="{{ me }}">Nota Pembelian Barang<hr></h3>
+
+		<div class="col-12">
+				<table border="0">
+					<tr>
+						<td style="width: 30%">Nama Barang</td>
+						<td style="width: 5%">:</td>
+						<td id="barang" data-name="{{ data.nama }}">{{ data.nama }}</td>
+					</tr>
+					<tr>
+						<td>Jumlah</td>
+						<td>:</td>
+						<td>{{ data.qty }}</td>
+					</tr>
+					<tr>
+						<td>Harga</td>
+						<td>:</td>
+						<td>Rp. {{ data.harga }}</td>
+					</tr>
+					<tr>
+						<td>Ongkos Kirim</td>
+						<td>:</td>
+						<td>Rp. {{ data.ongkir }}</td>
+					</tr>
+					{% set total = data.harga * data.qty + data.ongkir %}
+					<tr>
+						<td>Total</td>
+						<td>:</td>
+						<td>Rp. {{ total }}</td>
+					</tr>
+					<tr>
+						<td>Alamat</td>
+						<td>:</td>
+						<td>{{ data.alamat }}</td>
+					</tr>
+					<tr>
+						<td>Pemesan</td>
+						<td>:</td>
+						<td>{{ data.pemesan }}</td>
+					</tr>
+					<tr>
+						<td>Pengirim</td>
+						<td>:</td>
+						<td>{{ pengirim }}</td>
+					</tr>
+					<tr>
+						<td>Tanggal</td>
+						<td>:</td>
+						<td>{{ data.waktu }}</td>
+					</tr>
+				
+				{% if data.id_pengirim == me %}
+
+					<tr>
+						<td colspan="3">
+							<form action="/resi/{{ id }}" method="POST">			
+								<input class="col-12" type="text" name="resi" placeholder="No. Resi" value="{{ data.resi }}" required>
+								<input class="col-4" type="submit" value="Update Resi">
+							</form>
+						</td>
+					</tr>
+
+				{% else %}
+
+					<tr>
+						<td>Resi</td>
+						<td>:</td>
+						<td>
+							{% if data.resi == null %} <i>Barang belum dikirim.</i>
+							{% else %} {{ data.resi }}
+							{% endif %}
+						</td>
+					</tr>
+
+				{% endif %}
+
+				</table>
+		</div> 
+
+	</div>
+</div>
+
+<script src="../js/bcpesan.js"></script>
+<script src="../js/bcbeli.js"></script>
+
+{% endblock %}

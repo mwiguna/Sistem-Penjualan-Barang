@@ -1,0 +1,435 @@
+@font-face {
+	font-family: GRB;
+	src: url(../font/GothamRoundedBook.ttf);
+}
+
+* {font-family: GRB}
+a {text-decoration: none}
+td {padding: 1%; font-size: 11pt}
+
+/*----------- Header -----------*/
+
+header > .col-12 {
+	text-align: center;
+	background-color: #38C;
+	color: #fff;
+	font-weight: 900;
+	overflow-y: auto;
+}
+header.row {
+	overflow-y: auto;
+	box-shadow: 0 0 5px 1px #ccc;
+}
+.main-title {
+	text-decoration: none;
+	color: #fff;
+}
+
+header .col-4, header .col-6  {
+	padding: 5% 0;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	height: 100%;
+}
+header .col-4:hover, header .col-6:hover {
+	background-color: #226FBB;
+}
+.mmtm {
+	padding-top: 1.25%;
+	padding-left: 3%;
+	font-size: 11pt;
+}
+.mmtm:before {
+	position: absolute;
+	left: 0.8%;
+	top: 1.2%;
+	content: url(../img/favicon.png);
+}
+
+/*----------- Main -----------*/
+
+
+main {
+	margin: 2% 0;
+}
+.barang-cont {
+	margin-top: 2%;
+	padding: 1%;
+	border: 1px solid #aaa;
+}
+.barang-cont img {
+	height: 115px;
+}
+.buy-bt, .del-bt {
+	padding: 2% 0;
+	background-color: #22AA55;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	font-weight: 900;
+	border-radius: 2px;
+}
+.buy-bt:hover {
+	cursor: pointer;
+	background-color: #119944;
+}
+.del-bt {
+	background-color: #3A464B;
+}
+.del-bt:hover {
+	background-color: #2A363B;
+}
+.namabar, .hargabar, .penbar {
+	padding: 1% 0;
+	font-size: 11pt;
+	text-align: center;
+}
+.penbar {
+	color: #666;
+}
+
+input {
+	padding: 1%;
+	margin-bottom: 1%;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	outline: 0;
+	background-color: #fff;
+}
+input[type="submit"] {
+	padding: 1%;	
+	border: 1px solid #38C;
+	background-color: #38C;
+	font-weight: 900;
+	color: #fff;
+}
+input[type="submit"]:hover {
+	cursor: pointer;
+	background-color: #26B;
+	border-color: #26B;
+}
+.inbar {
+	height: 474px;
+	overflow-y: scroll;
+}
+.inbar::-webkit-scrollbar,
+.prBarang::-webkit-scrollbar,
+.main-admin::-webkit-scrollbar,
+.main-cont::-webkit-scrollbar {
+	width: 10px;
+}
+.inbar::-webkit-scrollbar-thumb, 
+.prBarang::-webkit-scrollbar-thumb,
+.main-admin::-webkit-scrollbar-thumb, 
+.main-cont::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #ddd;
+}
+.titleform {
+	color: #26B;
+	font-weight: 900;
+	font-size: 16pt;
+	margin-bottom: 2%;
+}
+.logmain {
+	padding: 1% 2%;
+	margin-bottom: 5%;
+}
+.pad1 {
+	padding: 1% !important;
+}
+.pad2 {
+	padding: 2% !important;
+}
+.pad3 {
+	padding: 3% !important;
+}
+.bot2 {
+	margin-bottom: 2%;
+}
+.padr2 {
+	padding-right: 2%;
+}
+.label {
+	color: #555;
+	padding: 2% 0;
+}
+.member {
+	padding: 2%;
+	border-bottom: 1px solid #aaa;
+}
+a.lapc {
+	padding: 0;
+	color: #333;
+	border-bottom: 1px solid #ccc;
+	font-weight: 100;
+}
+.pemnot {
+	text-align: center;
+	color: #555;
+	padding: 5% 0;
+}
+
+/*----------- Admin Template -----------*/
+
+
+.menu-tool {
+	margin-right: 2%;
+	color: #fff;
+	background-color: #2A363B;
+	min-height: 579px;
+	box-shadow: 0 0 5px 1px #ccc;
+}
+.menu-tool .col-12 {
+	padding: 8% 4%;
+	text-decoration: none;
+	color: #fff;
+	position: relative;
+}
+.menu-kat {
+	font-size: 10pt;
+	padding: 0 4%;
+}
+.menu-tool .col-12.active {
+	background-color: #1A252B;
+}
+.menu-tool .col-12:hover {
+	background-color: #1A252B;
+}
+.title-menu {
+	padding-left: 25% !important;
+	font-size: 14pt;
+	font-weight: 900;
+}
+.title-menu:hover {
+	cursor: default;
+	background-color: #2A363B !important;
+}
+.title-menu:before {
+	content: url(../img/profile.png);
+	left: 5%;
+	top: 20%;
+	position: absolute;
+}
+.dstm {
+	font-size: 13pt;
+	padding-left: 22% !important;
+}
+
+.main-admin {
+	margin: 2% 1%;
+	height: 520px;
+	overflow-y: scroll;
+}
+.main-cont {
+	margin: 0 1%;
+	height: 450px;
+	overflow-y: scroll;
+}
+.dftad {
+	padding-right: 1.5%;
+	padding-bottom: 1.5%;
+}
+.prBarang {
+	height: 450px;
+	overflow-y: scroll;
+}
+a.fol {
+	color: #fff;
+	font-weight: 900;
+	padding: 0.5% 1%;
+	border-radius: 5px;
+	background-color: #37C;
+	text-decoration: none;
+	text-align: center;
+}
+a.fol:hover {
+	background-color: #26B;
+}
+a.listcom {
+	color: #26A;
+	font-weight: 900;
+}
+a.uf, a.fsh {
+	background-color: #2A5;
+}
+a.uf:hover, a.fsh:hover {
+	background-color: #119944; 
+}
+.member:hover {
+	cursor: pointer;
+	background-color: #F2F2F2;
+}
+.timm {
+	color: #555;
+	font-size: 9pt;
+}
+.notifadmin {
+	background-color: #DF2233;
+	border-radius: 50%;
+	color: #fff;
+	position: absolute;
+	right: 15%;
+	width: 25px;
+	height: 25px;
+	padding-top: 2.3%;
+	text-align: center;
+	font-weight: 900;
+	opacity: 0;
+	font-size: 10pt;
+}
+.notifchat {
+	opacity: 1;
+	padding-top: 0.3%;
+}
+.chatroom {
+	padding: 0 2%;
+	height: 420px;
+	overflow-y: scroll;
+	padding-bottom: 2%;
+}
+.chatroom::-webkit-scrollbar{
+	width: 10px;
+}
+.chatroom::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: #39C;
+}
+.ovhide {
+	overflow: hidden;
+}
+.cancel-btn {
+	margin-left: 1%;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 11pt;
+	text-align: center;
+	background-color: #DF4846 !important;
+	border-color: #DF4846 !important;
+}
+.chatc {
+	padding: 1%;
+	font-size: 11pt;
+	border-radius: 5px;
+	border: none;
+	margin-bottom: 1%;
+	transition: 0.1s ease !important;
+}
+.chatyu {
+	background-color: rgba(5, 240, 20, 0.4);
+}
+.chatyu:hover {
+	cursor: pointer;
+	background-color: rgba(5, 215, 10, 0.5);
+}
+.chatme {
+	background-color: rgba(15, 170, 220, 0.4);
+}
+.chatme:hover {
+	cursor: pointer;
+	background-color: rgba(15, 150, 220, 0.5);
+}
+.alert {
+	display: none;
+}
+
+/*----------- Footer -----------*/
+
+footer {
+	background-color: #3A464B;
+	padding: 1% 0;
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	bottom: 0;
+}
+
+
+@media only screen and (max-width: 1180px){
+	.menu-tool {
+		min-height: 100px;
+	}
+	.menu-tool .col-12 {
+		padding: 2%;
+	}
+	.barang-cont img {
+		height: 180px;
+	}
+	.notifadmin {
+		height: 20px;
+		width: 20px;
+		padding-top: 0.5%;
+	}
+	.bcpesan {
+		font-size: 9pt;
+	}
+	.chatroom {
+		height: 350px;
+	}
+	.chatc {
+		padding: 2%;
+	}
+	.title-menu {
+		padding-left: 8% !important;
+	}
+	.title-menu:before {
+		left: 2%;
+	}
+	.mmtm {
+		padding: 2% 0;
+	}
+	.mmtm:before {
+		left: 0;
+		top: 1%;
+		position: relative;
+		float: left;
+		width: 100%;
+	}
+	header .col-4, header .col-6 {
+		padding: 2% 0;
+	}
+	footer {
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 740px){
+	.chatme {
+		width: 80%;
+		margin-left: 20%;
+	}
+	.chatyu {
+		width: 80%;
+	}
+	.cancel-btn {
+		margin: 0;
+	}
+	input {
+		padding: 2% !important;
+	}
+	a.fol {
+		padding: 2%;
+	}
+}
+@media only screen and (max-width: 600px){
+	.container {
+		margin: 2%;
+		width: 96%;
+	}
+	.menu-tool .col-12 {
+		padding: 3%;
+	}
+	.bcpesan {
+		padding-top: 0.7%;
+	}
+	.title-menu {
+		padding-left: 12% !important;
+	}
+	.title-menu:before {
+		top: 10%;
+	}
+	.timm {
+		font-size: 8pt;
+	}
+}

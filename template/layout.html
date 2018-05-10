@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Sistem Informasi Pemesanan Barang</title>
+	<link rel="shortcut icon" href="/img/favicon.png"> 
+	<link rel="stylesheet" type="text/css" href="/css/rewidify.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/validation26.css">
+    <link href="/css/widget.css" rel="stylesheet">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/jquery3.min.js"></script>
+	<script src="/js/script.js"></script>
+</head>
+<body>
+
+<header class="row">
+	<div class="col-12">
+		<div class="col-3 push-6 col-lg-10 mmtm"><a href="/" class="main-title">Sistem Informasi Pemesanan Barang</a></div>
+		<div class="col-3 col-lg-10">
+			{% if cookiebradmin %}
+				<a href="/logoutadmin" class="col-6 col-lg-10">Logout</a>
+				<a href="/homeadmin" class="col-6 col-lg-10">Profile</a>
+			{% elseif cookiebrdistri %}
+				<a href="/logoutadmin" class="col-6 col-lg-10">Logout</a>
+				<a href="/homedistri" class="col-6 col-lg-10">Profile</a>
+			{% elseif cookiebruser %}
+				<a href="/logoutuser" class="col-6 col-lg-10">Logout</a>
+				<a href="/homeuser" class="col-6 col-lg-10">Profile</a>
+			{% else %}
+				<a href="/login" class="col-4 col-lg-10">Login</a>
+				<a href="/register" class="col-4 col-lg-10">Register</a>
+				<a href="/loginadmin" class="col-4 col-lg-10">Admin</a>
+			{% endif %}
+		</div>
+	</div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<audio class="alert" controls preload="none"> 
+   <source src="audio/alert.mp3" type="audio/mpeg">
+</audio>
+
+<footer class="row">Copyright &copy; 2016 Kelompok 2</footer>
+
+	<script type="text/javascript">
+		var socket = io();
+
+		$('form').submit(function(){
+			name = "Telah ditambahkan : " + $("#nama").val() + "<br>";
+			socket.emit('newMessage', name);
+		});
+
+		socket.on('newMessage', function(msg){
+			$('#val').append(msg);
+		});
+	</script>
+
+	<script src="/js/validation26.js"></script>
+    <script src="/js/validationro.js"></script>
+    <script src="/js/autocomplete.min.js"></script>
+
+</body>
+</html>

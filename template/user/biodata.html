@@ -1,0 +1,44 @@
+{% extends '../layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="col-2 col-lg-10 col-md-8 menu-tool">
+		<div class="col-12 title-menu">User Menu</div>
+		<a href="/homeuser"   class="col-12">Penjualan<span class="notifadmin bcbeli"></span></a>
+		<a href="/pembelian"  class="col-12">Pembelian</a>
+		<a href="/tambahuser" class="col-12">Tambah Barang</a>
+		<a href="/baranguser" class="col-12">Daftar Barang</a>
+		<a href="/pesanuser"  class="col-12">Pesan<span class="notifadmin bcpesan"></span></a>
+		<a href="/teman"      class="col-12">Teman</a>
+		<a href="/memberuser" class="col-12">Member</a>
+		<a href="/biodata" class="col-12 active">Biodata</a>
+	</div>
+	<div class="col-9 col-lg-7 col-md-8 main-admin">
+		<h3 data-me="{{ me }}">Biodata</h3>
+		{% if data.kota == null %}
+			<h4>{{ msg }}</h4>
+		{% endif %}
+		<form method="POST" action="/biodata/{{ me }}">
+			<input type="text" class="col-8" name="nama" value="{{ data.nama }}" required>
+			<input type="text" class="col-8" name="email" value="{{ data.email }}" required>
+			<input type="text" class="col-8" name="nohp" value="{{ data.nohp }}" placeholder="Nomor HP" required>
+			<input type="text" class="col-8" name="alamat" value="{{ data.alamat }}" placeholder="Alamat" required>
+			{% include '../formkota.html' %}
+			<input type="text" class="col-8" name="namarek" value="{{ data.namarek }}" placeholder="Nama Pemilik Rekening">
+			<input type="text" class="col-8" name="bank" value="{{ data.bank }}" placeholder="Bank">
+			<input type="submit" class="col-5" value="Edit">
+		</form>
+	</div>
+</div>
+
+<script src="js/bcpesan.js"></script>
+<script src="js/bcbeli.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".kota-tujuan").remove();
+		$(".kota-asal").removeAttr("disabled");
+		$(".kota-asal").val(dataCities[ {{ data.kota }} - 1].value);
+	});
+</script>
+
+{% endblock %}

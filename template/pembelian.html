@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="row">
+	<div class="container">
+		
+		<div class="col-12 pemnot">
+			<h2>Terimakasih Telah melakukan Pemesanan</h2>
+			<p>Harap melakukan pembayaran dengan total <b>Rp. {{ total }},- </b></p>
+			<p>Nomor Rekening : <b>0155-0100-5555-535</b> Bank BRI A/N <b>SIPEBA</b></p>
+			<p>Segera lakukan <a href="/pembelian">Konfirmasi Pembayaran</a> setelah melakukan pembayaran.</p>
+
+			<div class="col-12 pad2">
+				<a href="/" class="col-4 offset-4 fol pad2">Lanjut Berbelanja &raquo;</a>
+			</div>
+			
+		</div>
+
+
+	</div>
+</div>
+
+{% endblock %}

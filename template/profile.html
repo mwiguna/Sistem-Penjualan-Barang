@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<main class="row">
+	<div class="container">
+		<div class="col-12">
+			<form method="POST">
+				<input type="text" class="col-4" name="search" placeholder="Cari Barang">
+				<input type="submit" class="col-2" value="Search">
+			</form>
+		</div>
+		<div class="col-10 prBarang">
+			<div class="col-12 bot2">{{ msg }}</div>
+			{% for dt in brg %}
+				{% if dt.nama.length > 20 %}
+					{% set dt.nama = dt.nama.substr(0, 20) + '...' %}
+				{% endif %}
+
+				<div class="col-3 col-lg-5 dftad">
+					<div class="col-12 barang-cont">
+						<div class="col-12"><img src="../{{ dt.img }}"></div>
+						<div class="col-12 namabar">{{ dt.nama }}</div>
+						<div class="col-12 hargabar">Rp. {{ dt.harga }}</div>
+						<div class="col-12 penbar">{{ dt.penjual }}</div>
+						<a href="/buy/{{ dt.id }}" class="col-12 buy-bt">Beli</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="col-2 pad2">
+			<h3>{{ data.nama }}</h3>
+			<h4 class="timm pad2">{{ data.email }} ~ <br> {{ data.alamat }}</h4>
+			<a href="/pesanuser/{{ data.id }}" class="col-12 buy-bt"> Pesan </a>
+		</div>
+	</div>
+</main>
+
+{% endblock %}
